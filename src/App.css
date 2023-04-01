@@ -1,0 +1,94 @@
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card-component {
+  height: max-content;
+  padding: 10px;
+}
+
+img {
+  width: 90%;
+  height: 80%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 6px;
+}
+
+.pagination .page-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00a8ff;
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.pagination .page-number:hover {
+  color: #fff;
+  background: #00a8ff;
+}
+
+.pagination .active {
+  color: #fff;
+  background: #00a8ff;
+}
+
+.pagination .active:hover {
+  color: #00a8ff;
+  background: #fff;
+}
+
+li {
+  list-style-type: none;
+}
+
+.header-container {
+  /* color: #f4d06f;
+  background-color: #213e5c;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  height: 12vh;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+  background-color: #213e5c;
+  padding: 3%;
+  text-align: center;
+  color:#f4d06f;
+  ;
+}
+
+.header-container a {
+  text-decoration: none;
+  color: #f4d06f;
+}
+
+.header-container ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  margin-right: -5%;
+}
+.header-container li {
+  font-size: 1.4em;
+  padding: 0% 10%;
+  font-weight: bolder;
+}
+.footer {
+  background-color: #213e5c;
+  padding: 3%;
+  text-align: center;
+  color: white;
+}
