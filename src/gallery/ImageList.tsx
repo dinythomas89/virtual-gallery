@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react";
-import { useImageStore } from "../store/imageStore";
+import { useEffect } from "react";
+import { useImageStore, usePaginationStore } from "../store/imageStore";
 import ImageCard from "./ImageCard";
 import Pagination from "./Pagination";
 
 const GalleryList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(6);
   const data = useImageStore((state) => state.data);
   const updateData = useImageStore((state) => state.updateData);
   const ids = useImageStore((state) => state.ids);
   const updateIds = useImageStore((state) => state.updateIds);
+  const currentPage = usePaginationStore((state) => state.currentPage);
+  const updateCurrentPage = usePaginationStore(
+    (state) => state.updateCurrentPage
+  );
+  const recordsPerPage = usePaginationStore((state) => state.recordsPerPage);
 
   const getData = async () => {
     try {
@@ -38,7 +41,6 @@ const GalleryList = () => {
   const numberOfPages = Math.ceil(data.length / recordsPerPage);
 
   console.log(ids);
-
   return (
     <div className="tiles-container">
       <div className="card-container">
@@ -55,7 +57,7 @@ const GalleryList = () => {
       <Pagination
         numberOfPages={numberOfPages}
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        updateCurrentPage={updateCurrentPage}
       />
     </div>
   );
