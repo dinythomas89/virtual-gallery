@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useImageStore, usePaginationStore } from "../store/imageStore";
-import ImageCard from "./ImageCard";
-import Pagination from "./Pagination";
+import ImageCard from "../components/ImageCard";
+import Pagination from "../components/Pagination";
+import { CardContainer } from "../styles/pages.styles";
 
 const GalleryList = () => {
   const data = useImageStore((state) => state.data);
@@ -42,8 +43,8 @@ const GalleryList = () => {
 
   console.log(ids);
   return (
-    <div className="tiles-container">
-      <div className="card-container">
+    <>
+      <CardContainer>
         {currentRecords &&
           currentRecords.length > 0 &&
           currentRecords.map((item) => (
@@ -53,13 +54,13 @@ const GalleryList = () => {
               onClick={() => updateIds(item.id)}
             />
           ))}
-      </div>
+      </CardContainer>
       <Pagination
         numberOfPages={numberOfPages}
         currentPage={currentPage}
         updateCurrentPage={updateCurrentPage}
       />
-    </div>
+    </>
   );
 };
 

@@ -1,3 +1,8 @@
+import {
+  PaginationContainer,
+  PaginationList,
+} from "../styles/pagination.styles";
+
 interface PaginationProps {
   numberOfPages: number;
   currentPage: number;
@@ -11,17 +16,17 @@ const Pagination = ({
   const pageNumbers = [...Array(numberOfPages + 1).keys()].slice(1);
 
   return (
-    <ul className="pagination">
+    <PaginationContainer>
       {pageNumbers.map((number) => (
-        <li
+        <PaginationList
           key={number}
           onClick={() => updateCurrentPage(number)}
-          className={`page-number ${currentPage ? "active" : ""}`}
+          primary={`${currentPage === number ? "active" : ""}`}
         >
           {number}
-        </li>
+        </PaginationList>
       ))}
-    </ul>
+    </PaginationContainer>
   );
 };
 

@@ -1,21 +1,24 @@
-import React from "react";
+import { Fragment } from "react";
+import { GlobalStyle } from "./styles/global.styles";
 import { Routes, Route } from "react-router-dom";
+
 import "./App.css";
-import Favourites from "./gallery/Favourites";
-import Footer from "./gallery/Footer";
-import Header from "./gallery/Header";
-import ImageList from "./gallery/ImageList";
+import Favourites from "./pages/Favourites";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import ImageList from "./pages/ImageList";
 
 const App = () => {
   return (
-    <div>
+    <Fragment>
+      <GlobalStyle/>
       <Header />
       <Routes>
         <Route path="/" element={<ImageList />} />
         <Route path="/favourites" element={<Favourites />} />
       </Routes>
       <Footer />
-    </div>
+    </Fragment>
   );
 };
 

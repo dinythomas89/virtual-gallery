@@ -1,6 +1,7 @@
 import { useImageStore, usePaginationStore } from "../store/imageStore";
-import ImageCard from "./ImageCard";
-import Pagination from "./Pagination";
+import ImageCard from "../components/ImageCard";
+import Pagination from "../components/Pagination";
+import { CardContainer } from "../styles/pages.styles";
 
 const Favourites = () => {
   const ids = useImageStore((state) => state.ids);
@@ -22,18 +23,18 @@ const Favourites = () => {
   const numberOfPages = Math.ceil(favouriteImages.length / recordsPerPage);
 
   return (
-    <div>
-      <div className="card-container">
+    <>
+      <CardContainer>
         {currentRecords &&
           currentRecords.length > 0 &&
           currentRecords.map((item) => <ImageCard key={item.id} item={item} />)}
-      </div>
+      </CardContainer>
       <Pagination
         numberOfPages={numberOfPages}
         currentPage={currentPage}
         updateCurrentPage={updateCurrentPage}
       />
-    </div>
+    </>
   );
 };
 
