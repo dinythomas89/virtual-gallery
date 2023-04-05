@@ -1,25 +1,24 @@
+import { useState } from "react";
 import { useImageStore, usePaginationStore } from "../store/imageStore";
 import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
 import { CardContainer } from "../styles/pages.styles";
 
 const Favourites = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const ids = useImageStore((state) => state.ids);
   const data = useImageStore((state) => state.data);
-  const currentPage = usePaginationStore((state) => state.currentPage);
-  const updateCurrentPage = usePaginationStore(
-    (state) => state.updateCurrentPage
-  );
   const recordsPerPage = usePaginationStore((state) => state.recordsPerPage);
 
   const favouriteImages = data.filter((item) => ids.includes(item.id));
-  console.log(favouriteImages);
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = favouriteImages.slice(
     indexOfFirstRecord,
     indexOfLastRecord
   );
+  console.log("current records", currentRecords);
+
   const numberOfPages = Math.ceil(favouriteImages.length / recordsPerPage);
 
   return (
@@ -29,11 +28,15 @@ const Favourites = () => {
           currentRecords.length > 0 &&
           currentRecords.map((item) => <ImageCard key={item.id} item={item} />)}
       </CardContainer>
-      <Pagination
-        numberOfPages={numberOfPages}
-        currentPage={currentPage}
-        updateCurrentPage={updateCurrentPage}
-      />
+      {numberOfPages > 1 ? (
+        <Pagination
+          numberOfPages={numberOfPages}
+          currentPage={currentPage}
+          updateCurrentPage={setCurrentPage}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };
