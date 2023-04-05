@@ -18,6 +18,7 @@ export const PaginationList = styled.li<{ primary: string }>`
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s all ease-in-out;
+  list-style-type: none;
 
   &:hover {
     color: #fff;

@@ -23,11 +23,17 @@ const Favourites = () => {
 
   return (
     <>
-      <CardContainer>
-        {currentRecords &&
-          currentRecords.length > 0 &&
-          currentRecords.map((item) => <ImageCard key={item.id} item={item} />)}
-      </CardContainer>
+      {favouriteImages.length > 0 ? (
+        <CardContainer>
+          {currentRecords &&
+            currentRecords.length > 0 &&
+            currentRecords.map((item) => (
+              <ImageCard key={item.id} item={item} />
+            ))}
+        </CardContainer>
+      ) : (
+        <h2>There is nothing to display</h2>
+      )}
       {numberOfPages > 1 ? (
         <Pagination
           numberOfPages={numberOfPages}
