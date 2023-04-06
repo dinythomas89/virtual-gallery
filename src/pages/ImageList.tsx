@@ -51,7 +51,9 @@ const GalleryList = () => {
             <ImageCard
               key={item.id}
               item={item}
-              onClick={() => updateIds(item.id)}
+              onClick={() => {
+                updateIds(item.id);
+              }}
             />
           ))}
       </CardContainer>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useImageStore, usePaginationStore } from "../store/imageStore";
 import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
-import { CardContainer } from "../styles/pages.styles";
+import { CardContainer, HeaderTag } from "../styles/pages.styles";
 
 const Favourites = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,7 +32,7 @@ const Favourites = () => {
             ))}
         </CardContainer>
       ) : (
-        <h2>There is nothing to display</h2>
+        <HeaderTag>There is nothing to display</HeaderTag>
       )}
       {numberOfPages > 1 ? (
         <Pagination
