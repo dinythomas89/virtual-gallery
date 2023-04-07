@@ -8,8 +8,7 @@ import { usePaginationStore } from "../store/paginationStore";
 
 const Favourites = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const ids = useImageStore((state) => state.ids);
-  const data = useImageStore((state) => state.data);
+  const [ids, data] = useImageStore((state) => [state.ids, state.data]);
   const recordsPerPage = usePaginationStore((state) => state.recordsPerPage);
 
   const favouriteImages = data.filter((item) => ids.includes(item.id));
@@ -19,7 +18,6 @@ const Favourites = () => {
     indexOfFirstRecord,
     indexOfLastRecord
   );
-
   const numberOfPages = Math.ceil(favouriteImages.length / recordsPerPage);
 
   return (

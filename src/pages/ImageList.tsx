@@ -9,16 +9,22 @@ import { useImageStore } from "../store/imageStore";
 import { usePaginationStore } from "../store/paginationStore";
 
 const GalleryList = () => {
-  const data = useImageStore((state) => state.data);
-  const fetchData = useImageStore((state) => state.fetchData);
-  const loading = useImageStore((state) => state.loading);
-  const error = useImageStore((state) => state.error);
-  const updateIds = useImageStore((state) => state.updateIds);
-  const currentPage = usePaginationStore((state) => state.currentPage);
-  const updateCurrentPage = usePaginationStore(
-    (state) => state.updateCurrentPage
+  const [data, fetchData, loading, error, updateIds] = useImageStore(
+    (state) => [
+      state.data,
+      state.fetchData,
+      state.loading,
+      state.error,
+      state.updateIds,
+    ]
   );
-  const recordsPerPage = usePaginationStore((state) => state.recordsPerPage);
+  const [currentPage, updateCurrentPage, recordsPerPage] = usePaginationStore(
+    (state) => [
+      state.currentPage,
+      state.updateCurrentPage,
+      state.recordsPerPage,
+    ]
+  );
 
   useEffect(() => {
     fetchData();
