@@ -8,6 +8,7 @@ interface PaginationProps {
   currentPage: number;
   updateCurrentPage: (number: number) => void;
 }
+
 const Pagination = ({
   numberOfPages,
   currentPage,

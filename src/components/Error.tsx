@@ -1,7 +1,7 @@
 import { ErrorContainer } from "../styles/error.styles";
 
 const Error = () => {
-  return <ErrorContainer>There is an error getting the data.</ErrorContainer>;
+  return <ErrorContainer>There is an error while getting the data.</ErrorContainer>;
 };
 
 export default Error;
