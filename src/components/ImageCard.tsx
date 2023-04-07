@@ -14,11 +14,11 @@ interface ImageCardProps {
 }
 
 const ImageCard = ({ item, onClick }: ImageCardProps) => {
-  const [clicked, setClicked] = useLikeButtonStore((state) => [
+  const [liked, setLiked] = useLikeButtonStore((state) => [
     state.liked,
     state.setLiked,
   ]);
-  const isSelected = clicked.includes(item.id);
+  const isSelected = liked.includes(item.id);
 
   return (
     <ImageCardContainer>
@@ -28,7 +28,7 @@ const ImageCard = ({ item, onClick }: ImageCardProps) => {
         <Button
           onClick={() => {
             onClick();
-            setClicked(item.id);
+            setLiked(item.id);
           }}
           isSelected={isSelected}
         >
