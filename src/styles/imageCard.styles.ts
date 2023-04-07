@@ -16,8 +16,8 @@ export const CardText = styled.p`
   font-size: 1.2em;
 `;
 
-export const Button = styled.button<{ selected: boolean }>`
+export const Button = styled.button<{ isSelected: boolean }>`
   width: 4em;
   margin: 4% 0;
-  background: ${(props) => (props.selected ? "#0089AE" : "#E9F1F1")};
+  background: ${(props) => (props.isSelected ? "#0089AE" : "#E9F1F1")};
 `;

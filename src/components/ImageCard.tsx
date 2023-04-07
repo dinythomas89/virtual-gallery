@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiFillLike } from "react-icons/ai";
 import { Data } from "../model/Data";
 import {
@@ -7,6 +6,7 @@ import {
   CardText,
   ImageCardContainer,
 } from "../styles/imageCard.styles";
+import { useLikeButtonStore } from "../store/likeButtonStore";
 
 interface ImageCardProps {
   item: Data;
@@ -14,7 +14,11 @@ interface ImageCardProps {
 }
 
 const ImageCard = ({ item, onClick }: ImageCardProps) => {
-  const [buttonColor, setButtonColor] = useState(false);
+  const [clicked, setClicked] = useLikeButtonStore((state) => [
+    state.liked,
+    state.setLiked,
+  ]);
+  const isSelected = clicked.includes(item.id);
 
   return (
     <ImageCardContainer>
@@ -22,11 +26,11 @@ const ImageCard = ({ item, onClick }: ImageCardProps) => {
       <CardText>Photographer: {item.photographer}</CardText>
       {onClick ? (
         <Button
-          selected={buttonColor}
           onClick={() => {
             onClick();
-            setButtonColor(true);
+            setClicked(item.id);
           }}
+          isSelected={isSelected}
         >
           <AiFillLike />
         </Button>
