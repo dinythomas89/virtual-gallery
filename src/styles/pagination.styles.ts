@@ -9,12 +9,12 @@ display: flex;
   }`;
 
 export const PaginationList = styled.li<{ primary: string }>`
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 600;
   color: ${(props) => (props.primary === "active" ? "#F1F1E6" : "#006685")};
   background: ${(props) =>
     props.primary === "active" ? "#006685" : "#F1F1E6"};
-  padding: 8px 10px;
+  padding: 12px 15px;
   border: 1px solid #006685;
   border-radius: 10px;
   cursor: pointer;
@@ -24,5 +24,9 @@ export const PaginationList = styled.li<{ primary: string }>`
   &:hover {
     color: #f1f1e6;
     background: #006685;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 10px;
   }
 `;

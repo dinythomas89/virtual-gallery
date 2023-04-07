@@ -9,6 +9,9 @@ export const HeaderContainer = styled.div`
   padding: 3%;
   text-align: center;
   color: #f4d06f;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const Logo = styled.img`

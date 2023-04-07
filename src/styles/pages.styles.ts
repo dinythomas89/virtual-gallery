@@ -10,4 +10,7 @@ export const CardContainer = styled.div`
 export const HeaderTag = styled.h2`
   padding: 5%;
   text-align: center;
+  @media (max-width: 768px) {
+    text-align: left;
+  }
 `;

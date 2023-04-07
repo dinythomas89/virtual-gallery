@@ -23,13 +23,16 @@ const Favourites = () => {
   return (
     <>
       {favouriteImages.length > 0 ? (
-        <CardContainer>
-          {currentRecords &&
-            currentRecords.length > 0 &&
-            currentRecords.map((item) => (
-              <ImageCard key={item.id} item={item} />
-            ))}
-        </CardContainer>
+        <>
+          <HeaderTag>Favourite images:</HeaderTag>
+          <CardContainer>
+            {currentRecords &&
+              currentRecords.length > 0 &&
+              currentRecords.map((item) => (
+                <ImageCard key={item.id} item={item} />
+              ))}
+          </CardContainer>
+        </>
       ) : (
         <HeaderTag>There is nothing to display</HeaderTag>
       )}
