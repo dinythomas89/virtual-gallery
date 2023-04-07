@@ -4,20 +4,19 @@ import { Data } from "../model/Data";
 interface ImageStore {
   data: Data[];
   ids: number[];
+  loading: boolean;
+  error: boolean;
   fetchData: () => void;
   updateIds: (newIds: number) => void;
 }
 
-interface PaginationStore {
-  recordsPerPage: number;
-  currentPage: number;
-  updateCurrentPage: (newPage: number) => void;
-}
-
-export const useImageStore = create<ImageStore>((set) => ({
+export const useImageStore = create<ImageStore>((set, get) => ({
   data: [],
   ids: [],
+  loading: false,
+  error: false,
   fetchData: async () => {
+    set(() => ({ loading: true }));
     try {
       const response = await fetch("./dataset.json", {
         headers: {
@@ -26,22 +25,16 @@ export const useImageStore = create<ImageStore>((set) => ({
         },
       });
       const result = await response.json();
-      set({ data: result });
-    } catch (error) {
-      return error;
+      set((state) => ({ data: (state.data = result), loading: false }));
+    } catch (err) {
+      if (err instanceof Error) {
+        set(() => ({ error: true, loading: false }));
+      }
     }
   },
   updateIds: (newIds: number) => {
     set((state) => ({
       ids: [...state.ids, newIds],
     }));
-  },
-}));
-
-export const usePaginationStore = create<PaginationStore>((set) => ({
-  recordsPerPage: 6,
-  currentPage: 1,
-  updateCurrentPage: (newPage: number) => {
-    set({ currentPage: newPage });
   },
 }));

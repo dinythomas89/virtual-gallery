@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useImageStore, usePaginationStore } from "../store/imageStore";
+
 import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
 import { CardContainer, HeaderTag } from "../styles/pages.styles";
+import { useImageStore } from "../store/imageStore";
+import { usePaginationStore } from "../store/paginationStore";
 
 const Favourites = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +19,6 @@ const Favourites = () => {
     indexOfFirstRecord,
     indexOfLastRecord
   );
-  console.log("current records", currentRecords);
 
   const numberOfPages = Math.ceil(favouriteImages.length / recordsPerPage);
 

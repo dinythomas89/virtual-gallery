@@ -1,13 +1,18 @@
 import { useEffect } from "react";
-import { useImageStore, usePaginationStore } from "../store/imageStore";
+
 import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 import { CardContainer } from "../styles/pages.styles";
+import { useImageStore } from "../store/imageStore";
+import { usePaginationStore } from "../store/paginationStore";
 
 const GalleryList = () => {
   const data = useImageStore((state) => state.data);
   const fetchData = useImageStore((state) => state.fetchData);
-  const ids = useImageStore((state) => state.ids);
+  const loading = useImageStore((state) => state.loading);
+  const error = useImageStore((state) => state.error);
   const updateIds = useImageStore((state) => state.updateIds);
   const currentPage = usePaginationStore((state) => state.currentPage);
   const updateCurrentPage = usePaginationStore(
@@ -24,7 +29,8 @@ const GalleryList = () => {
   const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
   const numberOfPages = Math.ceil(data.length / recordsPerPage);
 
-  console.log(ids);
+  if (error) return <Error />;
+  if (loading) return <Loading />;
 
   return (
     <>

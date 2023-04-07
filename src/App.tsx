@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ImageList from "./pages/ImageList";
 import { Container } from "./styles/app.styles";
+import Loading from "./components/Loading";
 
 const Favourites = lazy(() => import("./pages/Favourites"));
 
@@ -15,7 +16,7 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <Container>
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<ImageList />} />
             <Route path="/favourites" element={<Favourites />} />
