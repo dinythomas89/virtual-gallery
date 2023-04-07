@@ -4,7 +4,7 @@ import { Data } from "../model/Data";
 interface ImageStore {
   data: Data[];
   ids: number[];
-  updateData: (newData: Data[]) => void;
+  fetchData: () => void;
   updateIds: (newIds: number) => void;
 }
 
@@ -17,8 +17,19 @@ interface PaginationStore {
 export const useImageStore = create<ImageStore>((set) => ({
   data: [],
   ids: [],
-  updateData: (newData: Data[]) => {
-    set({ data: newData });
+  fetchData: async () => {
+    try {
+      const response = await fetch("./dataset.json", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const result = await response.json();
+      set({ data: result });
+    } catch (error) {
+      return error;
+    }
   },
   updateIds: (newIds: number) => {
     set((state) => ({

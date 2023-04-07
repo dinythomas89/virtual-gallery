@@ -5,6 +5,7 @@ import { GlobalStyle } from "./styles/global.styles";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ImageList from "./pages/ImageList";
+import { Container } from "./styles/app.styles";
 
 const Favourites = lazy(() => import("./pages/Favourites"));
 
@@ -13,12 +14,14 @@ const App = () => {
     <Fragment>
       <GlobalStyle />
       <Header />
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <Routes>
-          <Route path="/" element={<ImageList />} />
-          <Route path="/favourites" element={<Favourites />} />
-        </Routes>
-      </Suspense>
+      <Container>
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<ImageList />} />
+            <Route path="/favourites" element={<Favourites />} />
+          </Routes>
+        </Suspense>
+      </Container>
       <Footer />
     </Fragment>
   );

@@ -6,7 +6,7 @@ import { CardContainer } from "../styles/pages.styles";
 
 const GalleryList = () => {
   const data = useImageStore((state) => state.data);
-  const updateData = useImageStore((state) => state.updateData);
+  const fetchData = useImageStore((state) => state.fetchData);
   const ids = useImageStore((state) => state.ids);
   const updateIds = useImageStore((state) => state.updateIds);
   const currentPage = usePaginationStore((state) => state.currentPage);
@@ -15,25 +15,8 @@ const GalleryList = () => {
   );
   const recordsPerPage = usePaginationStore((state) => state.recordsPerPage);
 
-  const getData = async () => {
-    try {
-      const response = await fetch("./dataset.json", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      const result = await response.json();
-      updateData(result);
-    } catch (error) {
-      if (error) {
-        return error;
-      }
-    }
-  };
-
   useEffect(() => {
-    getData();
+    fetchData();
   }, []);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
@@ -42,6 +25,7 @@ const GalleryList = () => {
   const numberOfPages = Math.ceil(data.length / recordsPerPage);
 
   console.log(ids);
+
   return (
     <>
       <CardContainer>
