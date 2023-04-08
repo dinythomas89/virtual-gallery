@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ImageList from "./pages/ImageList";
 import { Container } from "./styles/app.styles";
 import Loading from "./components/Loading";
+import NotFound from "./components/NotFound";
 
 const Favourites = lazy(() => import("./pages/Favourites"));
 
@@ -20,6 +21,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<ImageList />} />
             <Route path="/favourites" element={<Favourites />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </Container>
