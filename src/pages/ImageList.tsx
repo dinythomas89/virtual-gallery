@@ -4,7 +4,7 @@ import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { CardContainer } from "../styles/pages.styles";
+import { CardContainer, MainContainer } from "../styles/pages.styles";
 import { useImageStore } from "../store/imageStore";
 import { usePaginationStore } from "../store/paginationStore";
 
@@ -39,7 +39,7 @@ const GalleryList = () => {
   if (loading) return <Loading />;
 
   return (
-    <>
+    <MainContainer>
       <CardContainer>
         {currentRecords &&
           currentRecords.length > 0 &&
@@ -58,7 +58,7 @@ const GalleryList = () => {
         currentPage={currentPage}
         updateCurrentPage={updateCurrentPage}
       />
-    </>
+    </MainContainer>
   );
 };
 

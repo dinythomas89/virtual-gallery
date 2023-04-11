@@ -1,7 +1,7 @@
 import { NotFoundContainer } from "../styles/notFound.styles";
 
 const NotFound = () => {
-  return <NotFoundContainer>NotFound</NotFoundContainer>;
+  return <NotFoundContainer>Not Found</NotFoundContainer>;
 };
 
 export default NotFound;
