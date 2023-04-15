@@ -3,16 +3,13 @@ import { Data } from "../model/Data";
 
 interface ImageStore {
   data: Data[];
-  ids: number[];
   loading: boolean;
   error: boolean;
   fetchData: () => void;
-  updateIds: (newIds: number) => void;
 }
 
 export const useImageStore = create<ImageStore>((set, get) => ({
   data: [],
-  ids: [],
   loading: false,
   error: false,
   fetchData: async () => {
@@ -31,10 +28,5 @@ export const useImageStore = create<ImageStore>((set, get) => ({
         set(() => ({ error: true, loading: false }));
       }
     }
-  },
-  updateIds: (newIds: number) => {
-    set((state) => ({
-      ids: [...state.ids, newIds],
-    }));
   },
 }));

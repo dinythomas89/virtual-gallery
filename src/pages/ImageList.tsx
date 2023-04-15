@@ -9,15 +9,12 @@ import { useImageStore } from "../store/imageStore";
 import { usePaginationStore } from "../store/paginationStore";
 
 const GalleryList = () => {
-  const [data, fetchData, loading, error, updateIds] = useImageStore(
-    (state) => [
-      state.data,
-      state.fetchData,
-      state.loading,
-      state.error,
-      state.updateIds,
-    ]
-  );
+  const [data, fetchData, loading, error] = useImageStore((state) => [
+    state.data,
+    state.fetchData,
+    state.loading,
+    state.error,
+  ]);
   const [currentPage, updateCurrentPage, recordsPerPage] = usePaginationStore(
     (state) => [
       state.currentPage,
@@ -43,15 +40,7 @@ const GalleryList = () => {
       <CardContainer>
         {currentRecords &&
           currentRecords.length > 0 &&
-          currentRecords.map((item) => (
-            <ImageCard
-              key={item.id}
-              item={item}
-              onClick={() => {
-                updateIds(item.id);
-              }}
-            />
-          ))}
+          currentRecords.map((item) => <ImageCard key={item.id} item={item} />)}
       </CardContainer>
       <Pagination
         numberOfPages={numberOfPages}

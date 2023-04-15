@@ -10,10 +10,9 @@ import { useLikeButtonStore } from "../store/likeButtonStore";
 
 interface ImageCardProps {
   item: Data;
-  onClick?: () => void;
 }
 
-const ImageCard = ({ item, onClick }: ImageCardProps) => {
+const ImageCard = ({ item }: ImageCardProps) => {
   const [likedCardIds, toggleLike] = useLikeButtonStore((state) => [
     state.likedCardIds,
     state.toggleLike,
@@ -24,19 +23,14 @@ const ImageCard = ({ item, onClick }: ImageCardProps) => {
     <ImageCardContainer>
       <CardImage src={item.url} alt="" />
       <CardText>Photographer: {item.photographer}</CardText>
-      {onClick ? (
-        <Button
-          onClick={() => {
-            onClick();
-            toggleLike(item.id);
-          }}
-          isSelected={isSelected}
-        >
-          <AiFillLike />
-        </Button>
-      ) : (
-        ""
-      )}
+      <Button
+        onClick={() => {
+          toggleLike(item.id);
+        }}
+        isSelected={isSelected}
+      >
+        <AiFillLike />
+      </Button>
     </ImageCardContainer>
   );
 };

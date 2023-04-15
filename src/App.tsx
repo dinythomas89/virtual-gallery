@@ -15,13 +15,13 @@ const App = () => {
     <Fragment>
       <GlobalStyle />
       <Header />
-      <Routes>
-        <Route path="/" element={<ImageList />} />
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<ImageList />} />
           <Route path="/favourites" element={<Favourites />} />
-        </Suspense>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </Fragment>
   );
