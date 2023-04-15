@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #213e5c;
-  padding: 3%;
+  padding: 2.5%;
   text-align: center;
   color: #f4d06f;
   @media (max-width: 768px) {
@@ -15,7 +15,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 6em;
+  width: 5em;
   margin-left: 5%;
 `;
 

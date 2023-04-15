@@ -5,7 +5,6 @@ import { GlobalStyle } from "./styles/global.styles";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ImageList from "./pages/ImageList";
-import { Container } from "./styles/app.styles";
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
 
@@ -16,15 +15,13 @@ const App = () => {
     <Fragment>
       <GlobalStyle />
       <Header />
-      <Container>
+      <Routes>
+        <Route path="/" element={<ImageList />} />
         <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<ImageList />} />
-            <Route path="/favourites" element={<Favourites />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Route path="/favourites" element={<Favourites />} />
         </Suspense>
-      </Container>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
     </Fragment>
   );
